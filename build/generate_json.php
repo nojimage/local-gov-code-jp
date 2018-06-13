@@ -75,7 +75,7 @@ foreach ($designatedCitiesRows as $row) {
             'code' => $code,
             'name' => $city['pref_name'] . $name,
             'kana' => $city['pref_kana'] . $kana,
-            'ward_code' => $wardName,
+            'ward_code' => $code,
             'ward_name' => $wardName,
             'ward_kana' => $wardKana,
             'city_code' => $city['code'],
