@@ -1,0 +1,140 @@
+{
+    "$id": "https://github.com/nojimage/local-gov-code-jp",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "uniqueItems": true,
+    "definitions": {
+    },
+    "items": {
+        "$id": "https://github.com/nojimage/local-gov-code-jp/item",
+        "type": "object",
+        "required": [
+            "type",
+            "code",
+            "name",
+            "kana"
+        ],
+        "definitions": {
+            "code": {
+                "type": "string",
+                "pattern": "^[0-9]{6}$",
+                "examples": [
+                    "010006",
+                    "011002",
+                    "011011"
+                ]
+            },
+            "optionalCode": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "pattern": "^[0-9]{6}$",
+                "examples": [
+                    "010006",
+                    "011002",
+                    "011011"
+                ]
+            }
+        },
+        "properties": {
+            "type": {
+                "type": "string",
+                "title": "The Type Schema",
+                "enum": [
+                    "prefecture",
+                    "city",
+                    "ward"
+                ]
+            },
+            "code": {
+                "title": "The Code Schema",
+                "$ref": "#/definitions/code"
+            },
+            "name": {
+                "type": "string",
+                "title": "The Name Schema",
+                "examples": [
+                    "北海道",
+                    "北海道札幌市",
+                    "北海道札幌市中央区"
+                ]
+            },
+            "kana": {
+                "type": "string",
+                "title": "The Kana Schema",
+                "examples": [
+                    "ほっかいどう",
+                    "ほっかいどうさっぽろし",
+                    "ほっかいどうさっぽろしちゅうおうく"
+                ]
+            },
+            "ward_code": {
+                "title": "The Ward Code Schema",
+                "$ref": "#/definitions/optionalCode"
+            },
+            "ward_name": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "title": "The Ward Name Schema",
+                "examples": [
+                    "中央区"
+                ]
+            },
+            "ward_kana": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "title": "The Ward Kana Schema",
+                "examples": [
+                    "ちゅうおうく"
+                ]
+            },
+            "city_code": {
+                "title": "The City Code Schema",
+                "$ref": "#/definitions/optionalCode"
+            },
+            "city_name": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "title": "The City Name Schema",
+                "examples": [
+                    "札幌市"
+                ]
+            },
+            "city_kana": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "title": "The City Kana Schema",
+                "examples": [
+                    "さっぽろし"
+                ]
+            },
+            "pref_code": {
+                "title": "The Pref Code Schema",
+                "$ref": "#/definitions/optionalCode"
+            },
+            "pref_name": {
+                "type": "string",
+                "title": "The Pref Name Schema",
+                "examples": [
+                    "北海道"
+                ]
+            },
+            "pref_kana": {
+                "type": "string",
+                "title": "The Pref Kana Schema",
+                "examples": [
+                    "ほっかいどう"
+                ]
+            }
+        }
+    }
+}
