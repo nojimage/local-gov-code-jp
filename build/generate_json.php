@@ -21,7 +21,7 @@ $citiesRows = $citiesSheet->getRowIterator(2);
 foreach ($citiesRows as $row) {
     /* @var $row Row */
     $rowIdx = $row->getRowIndex();
-    $code = $citiesSheet->getCell('A' . $rowIdx)->getValue();
+    $code = (string)$citiesSheet->getCell('A' . $rowIdx)->getValue();
     $prefName = $citiesSheet->getCell('B' . $rowIdx)->getValue();
     $cityName = $citiesSheet->getCell('C' . $rowIdx)->getValue();
     $prefKana = mb_convert_kana($citiesSheet->getCell('D' . $rowIdx)->getValue(), 'HVcas');
@@ -62,7 +62,7 @@ $designatedCitiesRows = $designatedCitiesSheet->getRowIterator(2);
 foreach ($designatedCitiesRows as $row) {
     /* @var $row Row */
     $rowIdx = $row->getRowIndex();
-    $code = $designatedCitiesSheet->getCell('A' . $rowIdx)->getValue();
+    $code = (string)$designatedCitiesSheet->getCell('A' . $rowIdx)->getValue();
     $name = $designatedCitiesSheet->getCell('B' . $rowIdx)->getValue();
     $kana = mb_convert_kana($designatedCitiesSheet->getCell('C' . $rowIdx)->getValue(), 'HVcas');
     if (preg_match('/^(.+市)(.+区)$/', $name, $matches)) {
