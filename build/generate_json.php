@@ -88,7 +88,10 @@ foreach ($designatedCitiesRows as $row) {
     }
 }
 
+$merged = array_merge(array_values($prefs), array_values($cities), array_values($cityWards));
+
 // EXPORT
 file_put_contents(EXPORT_PREF_JSON, json_encode(array_values($prefs), EXPORT_JSON_OPT));
 file_put_contents(EXPORT_CITIES_JSON, json_encode(array_values($cities), EXPORT_JSON_OPT));
 file_put_contents(EXPORT_WARDS_JSON, json_encode(array_values($cityWards), EXPORT_JSON_OPT));
+file_put_contents(EXPORT_FULL_JSON, json_encode($merged, EXPORT_JSON_OPT));
