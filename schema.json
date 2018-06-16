@@ -49,7 +49,7 @@
             },
             "code": {
                 "title": "The Code Schema",
-                "$ref": "#/definitions/code"
+                "$ref": "#/items/definitions/code"
             },
             "name": {
                 "type": "string",
@@ -71,7 +71,7 @@
             },
             "ward_code": {
                 "title": "The Ward Code Schema",
-                "$ref": "#/definitions/optionalCode"
+                "$ref": "#/items/definitions/optionalCode"
             },
             "ward_name": {
                 "type": [
@@ -95,7 +95,7 @@
             },
             "city_code": {
                 "title": "The City Code Schema",
-                "$ref": "#/definitions/optionalCode"
+                "$ref": "#/items/definitions/optionalCode"
             },
             "city_name": {
                 "type": [
@@ -119,7 +119,7 @@
             },
             "pref_code": {
                 "title": "The Pref Code Schema",
-                "$ref": "#/definitions/optionalCode"
+                "$ref": "#/items/definitions/optionalCode"
             },
             "pref_name": {
                 "type": "string",
