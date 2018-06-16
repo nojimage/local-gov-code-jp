@@ -1,0 +1,26 @@
+language: php
+
+php:
+  - 7.2
+
+dist: trusty
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+matrix:
+  fast_finish: true
+
+install:
+  - composer install --prefer-dist --no-interaction
+
+before_script:
+  - composer build
+
+script:
+  - composer check
+
+notifications:
+  email: false
