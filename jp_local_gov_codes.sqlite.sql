@@ -12,8 +12,7 @@ CREATE TABLE IF NOT EXISTS `jp_local_gov_codes` (
     `ward_code` CHAR(6) NULL,
     `ward_name` VARCHAR(24) NULL,
     `ward_kana` VARCHAR(24) NULL,
-    PRIMARY KEY (`code`))
-DEFAULT CHARACTER SET = utf8;
+    PRIMARY KEY (`code`));
 CREATE INDEX `IX_type` on `jp_local_gov_codes`(`type` ASC);
 INSERT INTO `jp_local_gov_codes` (`code`, `type`, `name`, `kana`, `pref_code`, `pref_name`, `pref_kana`, `city_code`, `city_name`, `city_kana`, `ward_code`, `ward_name`, `ward_kana`) VALUES ("010006", "prefecture", "北海道", "ほっかいどう", "010006", "北海道", "ほっかいどう", NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `jp_local_gov_codes` (`code`, `type`, `name`, `kana`, `pref_code`, `pref_name`, `pref_kana`, `city_code`, `city_name`, `city_kana`, `ward_code`, `ward_name`, `ward_kana`) VALUES ("020001", "prefecture", "青森県", "あおもりけん", "020001", "青森県", "あおもりけん", NULL, NULL, NULL, NULL, NULL, NULL);

@@ -8,6 +8,7 @@ $prefs = json_decode(file_get_contents(EXPORT_PREF_JSON), true);
 $cities = json_decode(file_get_contents(EXPORT_CITIES_JSON), true);
 $cityWards = json_decode(file_get_contents(EXPORT_WARDS_JSON), true);
 
+// -- MySQL
 ob_start();
 ?>
 CREATE TABLE IF NOT EXISTS `<?= TABLE_NAME ?>` (
@@ -24,11 +25,33 @@ CREATE TABLE IF NOT EXISTS `<?= TABLE_NAME ?>` (
     `ward_code` CHAR(6) NULL,
     `ward_name` VARCHAR(24) NULL,
     `ward_kana` VARCHAR(24) NULL,
-    PRIMARY KEY (`code`),
-    INDEX `IX_type` (`type` ASC))
+    PRIMARY KEY (`code`))
 DEFAULT CHARACTER SET = utf8;
+CREATE INDEX `IX_type` on `jp_local_gov_codes`(`type` ASC);
 <?php
-$createSql = ob_get_clean();
+$createTableMySQL = ob_get_clean();
+
+// -- SQLite
+ob_start();
+?>
+CREATE TABLE IF NOT EXISTS `<?= TABLE_NAME ?>` (
+    `code` CHAR(6) NOT NULL,
+    `type` VARCHAR(16) NOT NULL,
+    `name` VARCHAR(64) NOT NULL,
+    `kana` VARCHAR(64) NOT NULL,
+    `pref_code` CHAR(6) NULL,
+    `pref_name` VARCHAR(12) NULL,
+    `pref_kana` VARCHAR(12) NULL,
+    `city_code` CHAR(6) NULL,
+    `city_name` VARCHAR(24) NULL,
+    `city_kana` VARCHAR(24) NULL,
+    `ward_code` CHAR(6) NULL,
+    `ward_name` VARCHAR(24) NULL,
+    `ward_kana` VARCHAR(24) NULL,
+    PRIMARY KEY (`code`));
+CREATE INDEX `IX_type` on `jp_local_gov_codes`(`type` ASC);
+<?php
+$createTableSQLite = ob_get_clean();
 
 $insertQueries = [];
 foreach ($prefs as $pref) {
@@ -79,4 +102,5 @@ foreach ($cityWards as $ward) {
     ]);
 }
 
-file_put_contents(EXPORT_MYSQL, $createSql . implode("\n", $insertQueries));
+file_put_contents(EXPORT_MYSQL, $createTableMySQL . implode("\n", $insertQueries));
+file_put_contents(EXPORT_SQLITE, $createTableSQLite . implode("\n", $insertQueries));

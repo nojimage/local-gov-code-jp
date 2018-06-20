@@ -11,5 +11,6 @@ define('EXPORT_WARDS_JSON', ROOT . '/wards.json');
 define('EXPORT_FULL_JSON', ROOT . '/index.json');
 define('TABLE_NAME', 'jp_local_gov_codes');
 define('EXPORT_MYSQL', ROOT . '/jp_local_gov_codes.mysql.sql');
+define('EXPORT_SQLITE', ROOT . '/jp_local_gov_codes.sqlite.sql');
 
 require_once(ROOT . '/vendor/autoload.php');
