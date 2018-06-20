@@ -20,6 +20,7 @@
 - wards.json 政令指定都市の区コード
 - index.json 上記prefectures, cities, wardsを結合したもの
 - jp_local_gov_codes.mysql.sql MySQL用テーブル定義＋データ
+- jp_local_gov_codes.sqlite.sql SQLite用テーブル定義＋データ
 
 を提供します。
 
