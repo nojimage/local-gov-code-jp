@@ -14,3 +14,5 @@ define('EXPORT_MYSQL', ROOT . '/jp_local_gov_codes.mysql.sql');
 define('EXPORT_SQLITE', ROOT . '/jp_local_gov_codes.sqlite.sql');
 
 require_once(ROOT . '/vendor/autoload.php');
+
+ini_set('memory_limit', '256M');
