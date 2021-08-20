@@ -1,28 +1,54 @@
-FROM php:7
+FROM php:7-alpine as php-build
 
+ENV PHPIZE_DEPS \
+		autoconf \
+		file \
+		g++ \
+		gcc \
+		libc-dev \
+		make \
+		pkgconf \
+		re2c
+
+RUN apk add --no-cache shadow
+
+# install the PHP extensions we need
+RUN apk add --no-cache --virtual .build-deps \
+        $PHPIZE_DEPS \
+        freetype-dev \
+        libjpeg-turbo-dev \
+        libpng-dev \
+        libzip-dev \
+	&& docker-php-ext-configure gd \
+	&& docker-php-ext-install -j$(nproc) gd \
+	&& docker-php-ext-configure zip \
+    && docker-php-ext-install -j$(nproc) zip
+
+RUN runDeps="$( \
+       scanelf --needed --nobanner --recursive /usr/local /usr/lib \
+    		| awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
+    		| sort -u \
+    		| xargs -r apk info --installed \
+    		| sort -u \
+    )" \
+  && apk del .build-deps \
+  && apk add --no-cache --virtual .php-custom-rundeps $runDeps
+
+################################################################################
+FROM php:7-alpine
+COPY --from=php-build /usr /usr
+COPY --from=php-build /etc /etc
+COPY --from=php-build /lib /lib
+COPY --from=php-build /bin /bin
+COPY --from=php-build /sbin /sbin
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_NO_INTERACTION 1
 
-RUN apt-get update
-
-RUN apt-get install -y wget libjpeg-dev libfreetype6-dev
-RUN apt-get install -y libmagick++-dev \
-libmagickwand-dev \
-libpq-dev \
-libfreetype6-dev \
-libjpeg62-turbo-dev \
-libpng-dev \
-libwebp-dev \
-libxpm-dev \
-libzip-dev
-
-RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
-RUN docker-php-ext-install -j$(nproc) gd
-RUN docker-php-ext-install zip
-
 WORKDIR /app
 COPY composer.json ./
 RUN composer install
 COPY . .
+
+CMD composer build
