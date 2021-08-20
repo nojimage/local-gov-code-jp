@@ -126,3 +126,12 @@ Composerによるインストールが可能です。
 ```
 composer require nojimage/local-gov-code-jp
 ```
+
+## Build
+
+docker-compose を利用してデータをビルドすることができます。
+
+```
+docker-compose build builder
+docker-compose run --rm builder composer build
+```

@@ -1,0 +1,12 @@
+version: "3"
+services:
+  builder:
+    build:
+      context: .
+    volumes:
+      - ./index.json:/app/index.json:cached
+      - ./prefecture.json:/app/prefecture.json:cached
+      - ./cities.json:/app/cities.json:cached
+      - ./wards.json:/app/wards.json:cached
+      - ./jp_local_gov_codes.mysql.sql:/app/jp_local_gov_codes.mysql.sql:cached
+      - ./jp_local_gov_codes.sqlite.sql:/app/jp_local_gov_codes.sqlite.sql:cached
