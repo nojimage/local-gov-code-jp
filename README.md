@@ -132,6 +132,6 @@ composer require nojimage/local-gov-code-jp
 docker-compose を利用してデータをビルドすることができます。
 
 ```
-docker-compose build builder
-docker-compose run --rm builder composer build
+docker-compose build
+docker-compose run --rm builder
 ```
