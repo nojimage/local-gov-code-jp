@@ -1,0 +1,13 @@
+.github/
+composer.*
+vendor/
+docker-compose.yml
+Dockerfile
+.*-version
+.idea/
+
+build/
+php/
+tmp/
+test.db
+*.sql
