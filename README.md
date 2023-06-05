@@ -13,7 +13,7 @@
 
 [総務省｜電子自治体｜全国地方公共団体コード](http://www.soumu.go.jp/denshijiti/code.html)
 
-都道府県コード及び市区町村コード（令和元年5月1日現在）をベースに作成しています。
+都道府県コード及び市区町村コード（令和5年4月1日現在）をベースに作成しています。
 
 - prefectures.json 都道府県コード
 - cities.json 市区町村コード
@@ -129,9 +129,9 @@ composer require nojimage/local-gov-code-jp
 
 ## Build
 
-docker-compose を利用してデータをビルドすることができます。
+docker-compose を利用してデータをビルドできます。
 
 ```
-docker-compose build
-docker-compose run --rm builder
+docker compose build
+docker compose run --rm builder
 ```

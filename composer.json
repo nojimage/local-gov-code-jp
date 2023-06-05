@@ -4,14 +4,15 @@
     "type": "library",
     "license": "MIT",
     "require-dev": {
-        "php": "^7.2",
+        "php": "^8.2",
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-pdo": "*",
-        "cakephp/utility": "^3.6",
-        "fabpot/goutte": "^3.2",
+        "cakephp/utility": "^4.4",
         "justinrainbow/json-schema": "^5.2",
-        "phpoffice/phpspreadsheet": "^1.16"
+        "phpoffice/phpspreadsheet": "^1.16",
+        "symfony/browser-kit": "^6.3",
+        "symfony/http-client": "^6.3"
     },
     "scripts": {
         "build": [

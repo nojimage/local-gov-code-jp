@@ -1,0 +1,24 @@
+{
+  "name": "local-gov-code-jp",
+  "version": "1.0.20230401",
+  "description": "Local government codes in Japan",
+  "main": "index.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nojimage/local-gov-code-jp.git"
+  },
+  "keywords": [
+    "local-government",
+    "japan",
+    "database"
+  ],
+  "author": "nojimage",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nojimage/local-gov-code-jp/issues"
+  },
+  "homepage": "https://github.com/nojimage/local-gov-code-jp#readme"
+}

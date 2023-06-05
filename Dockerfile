@@ -1,4 +1,4 @@
-FROM php:7-alpine as php-build
+FROM php:8-alpine as php-build
 
 ENV PHPIZE_DEPS \
 		autoconf \
@@ -35,7 +35,7 @@ RUN runDeps="$( \
   && apk add --no-cache --virtual .php-custom-rundeps $runDeps
 
 ################################################################################
-FROM php:7-alpine
+FROM php:8-alpine
 COPY --from=php-build /usr /usr
 COPY --from=php-build /etc /etc
 COPY --from=php-build /lib /lib
