@@ -69,8 +69,8 @@ foreach ($designatedCitiesRows as $row) {
     if (!strlen($code)) {
         continue;
     }
-    $name = $designatedCitiesSheet->getCell('C' . $rowIdx)->getValue();
-    $kana = mb_convert_kana($designatedCitiesSheet->getCell('E' . $rowIdx)->getValue() ?? '', 'HVcas');
+    $name = $designatedCitiesSheet->getCell('B' . $rowIdx)->getValue();
+    $kana = mb_convert_kana($designatedCitiesSheet->getCell('C' . $rowIdx)->getValue() ?? '', 'HVcas');
     if (preg_match('/^(.+市)(.+区)$/u', $name, $matches)) {
         $cityName = $matches[1];
         $wardName = $matches[2];
