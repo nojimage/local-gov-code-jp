@@ -4,9 +4,7 @@ require_once(__DIR__ . '/bootstrap.php');
 /**
  * データダウンロード
  */
-use Goutte\Client;
-
-$client = new Client();
+$client = new \Symfony\Component\BrowserKit\HttpBrowser();
 $downloadPage = $client->request('GET', DOWNLOAD_PAGE);
 
 $link = $downloadPage->selectLink(DOWNLOAD_LINK_TEXT)->link();

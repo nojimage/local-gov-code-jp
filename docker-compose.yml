@@ -1,9 +1,13 @@
-version: "3"
+version: "3.7"
+
+name: local-gov-code-jp
+
 services:
   builder:
     build:
       context: .
     volumes:
+      - ./build:/app/build
       - ./index.json:/app/index.json:cached
       - ./prefectures.json:/app/prefectures.json:cached
       - ./cities.json:/app/cities.json:cached

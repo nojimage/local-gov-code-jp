@@ -27,8 +27,8 @@ foreach ($citiesRows as $row) {
     }
     $prefName = $citiesSheet->getCell('B' . $rowIdx)->getValue();
     $cityName = $citiesSheet->getCell('C' . $rowIdx)->getValue();
-    $prefKana = mb_convert_kana($citiesSheet->getCell('D' . $rowIdx)->getValue(), 'HVcas');
-    $cityKana = mb_convert_kana($citiesSheet->getCell('E' . $rowIdx)->getValue(), 'HVcas');
+    $prefKana = mb_convert_kana($citiesSheet->getCell('D' . $rowIdx)->getValue() ?? '', 'HVcas');
+    $cityKana = mb_convert_kana($citiesSheet->getCell('E' . $rowIdx)->getValue() ?? '', 'HVcas');
     if (empty($cityName)) {
         $prefs[$prefName] = [
             'type' => 'prefecture',
@@ -70,8 +70,8 @@ foreach ($designatedCitiesRows as $row) {
         continue;
     }
     $name = $designatedCitiesSheet->getCell('C' . $rowIdx)->getValue();
-    $kana = mb_convert_kana($designatedCitiesSheet->getCell('E' . $rowIdx)->getValue(), 'HVcas');
-    if (preg_match('/^(.+市)(.+区)$/', $name, $matches)) {
+    $kana = mb_convert_kana($designatedCitiesSheet->getCell('E' . $rowIdx)->getValue() ?? '', 'HVcas');
+    if (preg_match('/^(.+市)(.+区)$/u', $name, $matches)) {
         $cityName = $matches[1];
         $wardName = $matches[2];
         $city = $cityNames[$cityName];
