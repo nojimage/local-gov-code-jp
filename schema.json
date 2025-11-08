@@ -4,9 +4,33 @@
     "type": "array",
     "uniqueItems": true,
     "definitions": {
+        "code": {
+            "type": "string",
+            "pattern": "^[0-9]{6}$",
+            "examples": [
+                "010006",
+                "011002",
+                "011011"
+            ]
+        },
+        "optionalCode": {
+            "anyOf": [
+                {
+                    "type": "string",
+                    "pattern": "^[0-9]{6}$"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "examples": [
+                "010006",
+                "011002",
+                "011011"
+            ]
+        }
     },
     "items": {
-        "$id": "https://github.com/nojimage/local-gov-code-jp/item",
         "type": "object",
         "required": [
             "type",
@@ -14,29 +38,6 @@
             "name",
             "kana"
         ],
-        "definitions": {
-            "code": {
-                "type": "string",
-                "pattern": "^[0-9]{6}$",
-                "examples": [
-                    "010006",
-                    "011002",
-                    "011011"
-                ]
-            },
-            "optionalCode": {
-                "type": [
-                    "string",
-                    "null"
-                ],
-                "pattern": "^[0-9]{6}$",
-                "examples": [
-                    "010006",
-                    "011002",
-                    "011011"
-                ]
-            }
-        },
         "properties": {
             "type": {
                 "type": "string",
