@@ -6,20 +6,18 @@ require_once(__DIR__ . '/bootstrap.php');
  */
 use Cake\Utility\Hash;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Worksheet\Row;
 
 $reader = IOFactory::createReaderForFile(DOWNLOAD_FILE);
 
 $spreadsheet = $reader->load(DOWNLOAD_FILE);
 
 // - 都道府県-市区町村
-$citiesSheet = $spreadsheet->getSheet(0);
+$citiesSheet = $spreadsheet->getSheet(CITY_SHEET_INDEX);
 $prefs = [];
 $cities = [];
 
-$citiesRows = $citiesSheet->getRowIterator(2);
+$citiesRows = $citiesSheet->getRowIterator(CITY_SHEET_START_ROW);
 foreach ($citiesRows as $row) {
-    /* @var $row Row */
     $rowIdx = $row->getRowIndex();
     $code = (string)$citiesSheet->getCell('A' . $rowIdx)->getValue();
     if (!strlen($code)) {
@@ -57,23 +55,21 @@ foreach ($citiesRows as $row) {
 }
 
 // - 政令指定都市
-$designatedCitiesSheet = $spreadsheet->getSheet(1);
+$designatedCitiesSheet = $spreadsheet->getSheet(WARD_SHEET_INDEX);
 $cityWards = [];
 $cityNames = Hash::combine($cities, '{n}.city_name', '{n}');
 
-$designatedCitiesRows = $designatedCitiesSheet->getRowIterator(2);
+$designatedCitiesRows = $designatedCitiesSheet->getRowIterator(WARD_SHEET_START_ROW);
 foreach ($designatedCitiesRows as $row) {
-    /* @var $row Row */
     $rowIdx = $row->getRowIndex();
     $code = (string)$designatedCitiesSheet->getCell('A' . $rowIdx)->getValue();
     if (!strlen($code)) {
         continue;
     }
-    $name = $designatedCitiesSheet->getCell('B' . $rowIdx)->getValue();
-    $kana = mb_convert_kana($designatedCitiesSheet->getCell('C' . $rowIdx)->getValue() ?? '', 'HVcas');
+    $name = $designatedCitiesSheet->getCell('C' . $rowIdx)->getValue();
+    $kana = mb_convert_kana($designatedCitiesSheet->getCell('E' . $rowIdx)->getValue() ?? '', 'HVcas');
     if (preg_match('/^(.+市)(.+区)$/u', $name, $matches)) {
-        $cityName = $matches[1];
-        $wardName = $matches[2];
+        [, $cityName, $wardName] = $matches;
         $city = $cityNames[$cityName];
         $wardKana = preg_replace('/\A' . $city['city_kana'] . '/', '', $kana);
         $cityWards[] = [

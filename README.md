@@ -1,8 +1,8 @@
 # Local government codes in Japan
 
 <p align="center">
-    <a href="https://travis-ci.org/nojimage/local-gov-code-jp" target="_blank">
-        <img alt="Build Status" src="https://img.shields.io/travis/nojimage/local-gov-code-jp/master.svg?style=flat-square">
+    <a href="https://github.com/nojimage/local-gov-code-jp/actions/workflows/ci.yml" target="_blank">
+        <img alt="Build Status" src="https://github.com/nojimage/local-gov-code-jp/actions/workflows/ci.yml/badge.svg">
     </a>
     <a href="https://packagist.org/packages/nojimage/local-gov-code-jp" target="_blank">
         <img alt="Latest Stable Version" src="https://img.shields.io/packagist/v/nojimage/local-gov-code-jp.svg?style=flat-square">
@@ -11,9 +11,9 @@
 
 総務省の提供する全国地方公共団体コードをJSON化したものです。
 
-[総務省｜電子自治体｜全国地方公共団体コード](http://www.soumu.go.jp/denshijiti/code.html)
+[総務省｜電子自治体｜全国地方公共団体コード](https://www.soumu.go.jp/denshijiti/code.html)
 
-都道府県コード及び市区町村コード（令和5年4月1日現在）をベースに作成しています。
+都道府県コード及び市区町村コード（令和6年1月1日現在）をベースに作成しています。
 
 - prefectures.json 都道府県コード
 - cities.json 市区町村コード
