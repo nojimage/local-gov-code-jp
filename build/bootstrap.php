@@ -1,7 +1,7 @@
 <?php
 define('ROOT', dirname(__DIR__));
 define('TMP', ROOT . '/tmp');
-define('DOWNLOAD_PAGE', 'http://www.soumu.go.jp/denshijiti/code.html');
+define('DOWNLOAD_PAGE', 'https://www.soumu.go.jp/denshijiti/code.html');
 define('DOWNLOAD_LINK_TEXT', 'Excelファイル');
 define('DOWNLOAD_FILE', TMP . '/cities.xls');
 define('EXPORT_JSON_OPT', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
